@@ -6,6 +6,7 @@ import BreakCrum from '../../components/BreakCrum';
 import { deleteOrder, getOrder } from '../../services';
 import { useNotify } from '../../hooks/useNoti';
 import DialogOrderSuccess from '../../components/DialogOrderSuccess';
+import FormInfo from './FormInfo';
 
 const Cart = () => {
     const [rowData, setRowData] = useState<any[]>([]);
@@ -111,17 +112,7 @@ const Cart = () => {
                 </table>
             </div>
             <TitleBar>Thông tin giao hàng</TitleBar>
-            <div>
-                <h1>Nhập địa chỉ nhận hàng :</h1>
-                <input type="text" className="form-input w-[400px]" />
-                <h1>Tên người nhận :</h1>
-                <input type="text" className="form-input w-[400px]" />
-                <h1>Số điện thoại :</h1>
-                <input type="text" className="form-input w-[400px]" />
-            </div>
-            <div className="mt-2">
-                <button className="button-style-container  w-[100px]">Giao hàng</button>
-            </div>
+            <FormInfo setIsOpen={setIsOpen} rowData={rowData} />
             <DialogOrderSuccess isOpen={isOpen} setIsOpen={setIsOpen} />
         </div>
     );

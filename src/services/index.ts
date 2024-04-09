@@ -29,3 +29,6 @@ export const deleteOrder = (id: number) => {
 export const getOrderHistory = () => {
     return axiosServices.get(`order-histories?populate=%2A`).then((res) => res?.data);
 };
+export const postOrderHistory = (params: any) => {
+    return axiosServices.post(`order-histories`, params).then((res) => res?.data);
+};
