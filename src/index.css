@@ -1,0 +1,124 @@
+* {
+    font-family: 'Spectral', serif;
+    font-size: 14px;
+    font-weight: 600;
+}
+.button-style-outline {
+    background: #fff;
+    border: 1px solid #ddd;
+    color: #333;
+    padding: 10px 0;
+    border-radius: 4px;
+    transition: 0.1s;
+}
+.button-style-outline:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.button-style-container {
+    background-color: #ffc107;
+    color: #333;
+    border-radius: 4px;
+    padding: 10px 0;
+    transition: 0.1s;
+}
+.button-style-container:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.card-item {
+    position: relative;
+    width: calc(100% / 4 - 22px);
+    height: 400px;
+    cursor: pointer;
+    border: 1px solid rgba(253, 241, 241, 0.867);
+}
+.card-item:hover {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+}
+.card-item span {
+    position: absolute;
+    background-color: #fce477;
+    padding: 4px 16px;
+    color: #fff;
+    top: 0px;
+    left: 0px;
+}
+.card-item img {
+    margin: 0 auto;
+}
+.card-item img:hover {
+    transition: 0.5s;
+    transform: scale(1.1);
+}
+.blog-item {
+    width: calc(100% / 3 - 30px);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+    margin-top: 10px;
+}
+.blog-item > div > img {
+    object-fit: cover;
+    transition: 1s all;
+    z-index: -999;
+    width: 100%;
+}
+.blog-item > div > img:hover {
+    transform: scale(1.01);
+}
+.intro {
+    margin-top: 30px;
+}
+.intro li {
+    list-style: circle;
+    margin-left: 30px;
+}
+.inputActive:active {
+    border: 3px solid #333;
+}
+.radioBtnCss {
+    width: 30px;
+    height: 30px;
+    color: #333;
+}
+.wrapper-loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #333;
+    opacity: 0.7;
+    z-index: 9999999;
+}
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    left: 49.5%;
+    top: 49.5%;
+}
+.loader::after {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-bottom-color: #ff3d00;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
