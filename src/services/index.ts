@@ -23,12 +23,7 @@ export const postOrder = (params: any) => {
 export const getOrder = () => {
     return axiosServices.get(`oders`).then((res) => res?.data);
 };
+
 export const deleteOrder = (id: number) => {
     return axiosServices.delete(`oders/${id}`).then((res) => res?.data);
-};
-export const getOrderHistory = () => {
-    return axiosServices.get(`order-histories?populate=%2A`).then((res) => res?.data);
-};
-export const postOrderHistory = (params: any) => {
-    return axiosServices.post(`order-histories`, params).then((res) => res?.data);
 };

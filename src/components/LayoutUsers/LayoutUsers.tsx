@@ -13,7 +13,7 @@ const LayoutUsers = ({ children }: Props) => {
 
     return (
         <div className="relative inline-block w-full">
-            <div className="w-[80%] mx-auto">
+            <div className="w-[70%] mx-auto">
                 {themeConfig.isLoading && <Loading />}
                 <HeaderUser />
                 <div className="w-[100%] ">{children}</div>

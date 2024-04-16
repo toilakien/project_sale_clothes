@@ -15,7 +15,7 @@
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 .button-style-container {
-    background-color: #ffc107;
+    background-color: #fce477;
     color: #333;
     border-radius: 4px;
     padding: 10px 0;
@@ -77,6 +77,34 @@
     width: 30px;
     height: 30px;
     color: #333;
+}
+.data-check {
+    position: relative;
+}
+.data-check > input[type='checkbox'] {
+    appearance: none;
+}
+
+.data-check > label {
+    position: relative;
+    font-size: 14px;
+    padding: 6px 24px;
+    margin: 0;
+    cursor: pointer;
+    /* background-color: #fce477; */
+    border-radius: 5px;
+    border: 3px solid #ffd400;
+}
+.data-check > .ticket {
+    position: absolute;
+    top: 10px;
+    left: 70%;
+    width: 30px;
+    height: 30px;
+    background-image: url('./assets/img/tick.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 9999;
 }
 .wrapper-loading {
     position: fixed;

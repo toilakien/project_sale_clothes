@@ -1,7 +1,9 @@
+import { formatTypeOfMoney } from '../../utils/formatTypeOfMoney';
+
 type Props = {
     img: string;
-    price: string;
-    disCount: string;
+    price: number;
+    disCount: number;
     title: String;
     id: number;
     handleClick: (id: number) => void;
@@ -15,8 +17,8 @@ const ItemBase = ({ img, disCount, price, title, handleClick, id }: Props) => {
             </div>
             <div className="px-8 ">
                 <h1 className="text-xl font-medium hover:text-[#fce477]">{title}</h1>
-                <p className="text-left text-xl text-[14px] text-linebreak text-[red]">{Number(price) * (100 - Number(disCount) / 100)}đ</p>
-                <p className="text-left text-[14px] text-linebreak line-through">{price}đ</p>
+                <p className="text-left text-xl text-[14px] text-linebreak text-[red]">{formatTypeOfMoney(Number(price) * ((100 - Number(disCount)) / 100))}</p>
+                <p className="text-left text-[14px] text-linebreak line-through">{formatTypeOfMoney(Number(price))}</p>
                 <span>-{disCount}%</span>
             </div>
         </a>

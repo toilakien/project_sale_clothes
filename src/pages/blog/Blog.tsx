@@ -49,7 +49,16 @@ const Blog = () => {
                     blog.map((e, index) => {
                         const { img, title, description, author, date } = e?.attributes;
 
-                        return <BlogItem title={title} description={description} author={author} date={date} img={`http://localhost:1337${img?.data[0]?.attributes?.formats?.thumbnail?.url}`} />;
+                        return (
+                            <BlogItem
+                                key={index}
+                                title={title}
+                                description={description}
+                                author={author}
+                                date={date}
+                                img={`http://localhost:1337${img?.data[0]?.attributes?.formats?.thumbnail?.url}`}
+                            />
+                        );
                     })}
             </div>
         </div>

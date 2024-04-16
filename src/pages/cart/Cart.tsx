@@ -1,42 +1,36 @@
-import React, { useEffect, useState } from 'react';
-import TitleBar from '../../components/TitleBar';
-import { setLoading, setPageTitle } from '../../store/themeConfigSlice';
-import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import BreakCrum from '../../components/BreakCrum';
-import { deleteOrder, getOrder } from '../../services';
-import { useNotify } from '../../hooks/useNoti';
 import DialogOrderSuccess from '../../components/DialogOrderSuccess';
+import TitleBar from '../../components/TitleBar';
+import { useNotify } from '../../hooks/useNoti';
+import { IRootState } from '../../store';
+import { deleteOrderForCart } from '../../store/shop';
+import { setPageTitle } from '../../store/themeConfigSlice';
 import FormInfo from './FormInfo';
+import OrderHistory from './OrderHistory';
+import { formatTypeOfMoney } from '../../utils/formatTypeOfMoney';
 
 const Cart = () => {
-    const [rowData, setRowData] = useState<any[]>([]);
+    const { cart } = useSelector((state: IRootState) => state.shop);
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(setPageTitle('Cart'));
-        callListCart();
     }, []);
-    async function callListCart() {
-        const response = await getOrder();
-        setRowData(response.data);
-    }
+
     async function deleteOrderCall(id: number) {
-        dispatch(setLoading(true));
-        const response = await deleteOrder(id);
-        if (response) {
-            dispatch(setLoading(false));
-            useNotify({ title: 'Đã xóa thành công', status: 'success' });
-            callListCart();
-        }
+        dispatch(deleteOrderForCart(id));
+        useNotify({ title: 'Đã xóa thành công', status: 'success' });
     }
 
     function totalMoney(arr: any[]) {
         let total = 0;
         arr.forEach((element) => {
-            total += element.attributes.price * element.attributes.count;
+            total += element.price * element.count;
         });
-        return total;
+        return formatTypeOfMoney(Number(total));
     }
 
     return (
@@ -59,9 +53,9 @@ const Cart = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {rowData.length > 0 ? (
-                            rowData?.map((e, index) => {
-                                const { name, size, count, price, color } = e?.attributes || {};
+                        {cart.length > 0 ? (
+                            cart?.map((e, index) => {
+                                const { name, size, count, price, color } = e || {};
 
                                 return (
                                     <tr key={index}>
@@ -70,11 +64,10 @@ const Cart = () => {
                                         <td>{size}</td>
                                         <td>{color}</td>
                                         <td>{count}</td>
-                                        <td>{price}</td>
+                                        <td>{formatTypeOfMoney(price)}</td>
                                         <td>
                                             <a
                                                 onClick={() => {
-                                                    console.log(e?.id);
                                                     deleteOrderCall(e?.id);
                                                 }}
                                                 className="cursor-pointer w-max h-max z-200 "
@@ -106,14 +99,15 @@ const Cart = () => {
                             <td></td>
                             <td>Tổng tiền :</td>
                             <td></td>
-                            <td>{totalMoney(rowData)} đ</td>
+                            <td>{totalMoney(cart)} </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <TitleBar>Thông tin giao hàng</TitleBar>
-            <FormInfo setIsOpen={setIsOpen} rowData={rowData} />
+            <FormInfo setIsOpen={setIsOpen} rowData={cart} />
             <DialogOrderSuccess isOpen={isOpen} setIsOpen={setIsOpen} />
+            <OrderHistory />
         </div>
     );
 };

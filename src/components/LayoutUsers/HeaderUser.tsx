@@ -1,29 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CiSearch } from 'react-icons/ci';
-import { Link, useLocation } from 'react-router-dom';
 import { IoCartOutline } from 'react-icons/io5';
-import Dropdown from '../Dropdown';
+import { useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import useInfoContext from '../../hooks/useInfoContext';
-import { getOrder } from '../../services';
+import { IRootState } from '../../store';
+import Dropdown from '../Dropdown';
 
 const HeaderUser = () => {
-    const [numberOrder, setNumberOrder] = useState<number>(0);
-    const location = useLocation();
+    const { cart } = useSelector((state: IRootState) => state.shop);
+    const [count, setCount] = useState<number>(0);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        callListCart();
-    }, [location?.pathname]);
-    async function callListCart() {
-        const response = await getOrder();
-        setNumberOrder(Number(response?.data?.length));
-    }
+        setCount(cart.length);
+    }, [cart]);
 
-    const { logout, user } = useInfoContext();
+    const { logout } = useInfoContext();
+    const user = JSON?.parse?.(localStorage?.getItem('user') || '');
+    const { username, email } = user || {};
+
     const handleLogout = () => {
         logout();
+        navigate('/login');
     };
-    console.log(user);
-    const { username, email } = user || {};
 
     const listHeaderNav = [
         {
@@ -47,6 +47,7 @@ const HeaderUser = () => {
             label: 'Liên hệ',
         },
     ];
+
     return (
         <div className="flex justify-between py-8 px-5 items-center">
             <h1 className="text-5xl font-bold hover:text-[#fbde59]">Gucci</h1>
@@ -67,7 +68,7 @@ const HeaderUser = () => {
                 </a>
                 <Link className="relative" to="/order">
                     <IoCartOutline style={{ fontSize: '2rem' }} />
-                    <span className="px-[7px] border-2 border-white rounded-full absolute top-[-10px] left-[20px] bg-slate-200 z-[999]">{numberOrder || 0}</span>
+                    <span className="px-[7px] border-2 border-white rounded-full absolute top-[-10px] left-[20px] bg-slate-200 z-[999]">{count}</span>
                 </Link>
 
                 <div className="dropdown shrink-0 flex">

@@ -25,8 +25,6 @@ const LoginBoxed = () => {
             password: '',
         },
         onSubmit: async (values: any) => {
-            console.log(values);
-
             await login(values);
         },
     });
@@ -50,13 +48,6 @@ const LoginBoxed = () => {
                         SIGN IN
                     </button>
                 </form>
-
-                <p className="text-center">
-                    Dont&apos;t have an account ?
-                    <Link to="/auth/boxed-signup" className="font-bold text-primary hover:underline ltr:ml-1 rtl:mr-1">
-                        Sign Up
-                    </Link>
-                </p>
             </div>
         </div>
     );

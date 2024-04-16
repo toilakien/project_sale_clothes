@@ -6,7 +6,7 @@ import { AuthGrand } from '../helpers/auth/AuthGrand';
 const CartRouter = React.lazy(() => import('../pages/cart/Cart'));
 const HomePageRouter = React.lazy(() => import('../pages/home-page/HomePage'));
 const ProductUserRouter = React.lazy(() => import('../pages/product-user/ProductUser'));
-const DetailItemRouter = React.lazy(() => import('../components/DetailItem'));
+const DetailItemRouter = React.lazy(() => import('../components/product-components/DetailItem'));
 const BlogRouter = React.lazy(() => import('../pages/blog/Blog'));
 const ContactRouter = React.lazy(() => import('../pages/contact/contact'));
 const IntroduceRouter = React.lazy(() => import('../pages/introduce/Introduce'));
