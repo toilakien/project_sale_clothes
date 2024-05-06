@@ -87,10 +87,9 @@ const DetailItem = () => {
                             </button>
                         </div>
                     </div>
-                    <div className="flex gap-8 items-end mt-2">
+                    <div className="flex gap-8 items-center mt-2">
                         <label>Size:</label>
                         <CheckboxCustom
-                            handleClick={refInputM?.current?.clickCheck}
                             refItem={(e: boolean) => {
                                 if (e) {
                                     setSize('M');
@@ -102,7 +101,6 @@ const DetailItem = () => {
                             M
                         </CheckboxCustom>
                         <CheckboxCustom
-                            handleClick={refInputL?.current?.clickCheck}
                             refItem={(e: boolean) => {
                                 if (e) {
                                     setSize('L');

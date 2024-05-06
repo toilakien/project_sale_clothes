@@ -6,12 +6,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import useInfoContext from '../../hooks/useInfoContext';
 import { IRootState } from '../../store';
 import Dropdown from '../Dropdown';
-import DialogSearch from '../DialogSearch';
 
 const HeaderUser = () => {
     const { cart } = useSelector((state: IRootState) => state.shop);
     const [count, setCount] = useState<number>(0);
-    const [open, setOpen] = useState<boolean>(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -65,7 +63,7 @@ const HeaderUser = () => {
                 })}
             </ul>
             <div className="flex gap-4 items-center">
-                <a style={{ cursor: 'pointer' }} onClick={() => setOpen(true)}>
+                <a>
                     <CiSearch style={{ fontSize: '2rem' }} />
                 </a>
                 <Link className="relative" to="/order">
@@ -115,7 +113,6 @@ const HeaderUser = () => {
                     </Dropdown>
                 </div>
             </div>
-            <DialogSearch isOpen={open} setIsOpen={setOpen} />
         </div>
     );
 };

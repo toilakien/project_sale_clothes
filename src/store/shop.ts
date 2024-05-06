@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { dispatch } from '.';
 import { useNotify } from '../hooks/useNoti';
-import { filterByName, getProducts, postOrder } from '../services';
+import { getProducts, postOrder } from '../services';
 import { BaseResponse } from '../types';
 import { IProduct } from '../types/product';
 
@@ -59,14 +59,4 @@ export async function postOrderCall({ params, callback }: any) {
 export function isDuplicateOrder(arr: any[], element: any) {
     const newArr = arr.map((e) => Number(e.id));
     return newArr.includes(Number(element.id));
-}
-type Payload = {
-    params: any;
-    callback: any;
-};
-export async function filterByNameCall({ params, callback }: Payload) {
-    const response = await filterByName(params);
-    if (callback && response) {
-        callback(response);
-    }
 }
