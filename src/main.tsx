@@ -15,11 +15,11 @@ import { BrowserRouter } from 'react-router-dom';
 
 // Redux
 import { Provider } from 'react-redux';
-import store from './store/index';
+import { ToastContainer } from 'react-toastify';
+import './index.css';
 import { AuthProvider } from './providers/auth-context';
 import Routers from './routers';
-import './index.css';
-import { ToastContainer } from 'react-toastify';
+import store from './store/index';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>

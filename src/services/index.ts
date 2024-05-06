@@ -27,3 +27,7 @@ export const getOrder = () => {
 export const deleteOrder = (id: number) => {
     return axiosServices.delete(`oders/${id}`).then((res) => res?.data);
 };
+
+export const filterByName = (value: string) => {
+    return axiosServices.get(`/products?filters[name][$contains]=${value}`).then((res) => res?.data);
+};

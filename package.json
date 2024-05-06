@@ -58,6 +58,7 @@
         "react-text-mask": "^5.5.0",
         "react-toastify": "^10.0.5",
         "sortablejs": "^1.15.0",
+        "styled-components": "^6.1.9",
         "sweetalert2": "^11.10.7",
         "swiper": "^11.1.0",
         "typescript": "^4.8.4",
