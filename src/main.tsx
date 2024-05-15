@@ -19,6 +19,8 @@ import store from './store/index';
 import { AuthProvider } from './providers/auth-context';
 import Routers from './routers';
 import './index.css';
+import './main.scss';
+
 import { ToastContainer } from 'react-toastify';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
