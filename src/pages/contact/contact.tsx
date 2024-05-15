@@ -2,11 +2,14 @@ import React, { ReactNode } from 'react';
 import { MdOutlinePlace } from 'react-icons/md';
 import { AiOutlineMail } from 'react-icons/ai';
 import BreakCrum from '../../components/BreakCrum';
+import { useFormik } from 'formik';
+
 type AddressProps = {
     children?: ReactNode;
     title?: string;
     des?: string;
 };
+
 const AddressItem = ({ children, title, des }: AddressProps) => {
     return (
         <div className="flex items-center gap-4">
@@ -20,6 +23,18 @@ const AddressItem = ({ children, title, des }: AddressProps) => {
 };
 
 const Contact = () => {
+    const formik = useFormik({
+        initialValues: {
+            name: '',
+            email: '',
+            phoneNumber: '',
+            content: '',
+        },
+        onSubmit: (values) => {
+            console.log(values);
+        },
+    });
+    const { handleBlur, handleChange, handleSubmit } = formik;
     return (
         <div className="w-full">
             <hr />
@@ -41,12 +56,14 @@ const Contact = () => {
                     <div>
                         <h1 className="text-2xl font-bold">Gửi thắc mắc cho chúng tôi</h1>
                         <p>Nếu bạn có thắc mắc gì, có thể gửi yêu cầu cho chúng tôi, và chúng tôi sẽ liên lạc lại với bạn sớm nhất có thể .</p>
-                        <form>
-                            <input className="form-input mt-2" type="text" placeholder="Tên của bạn" />
-                            <input className="form-input mt-2" type="email" placeholder="Email của bạn" />
-                            <input className="form-input mt-2" type="tel" placeholder="Số điện thoại của bạn" />
-                            <input className="form-input mt-2" type="text" placeholder="Nội dung" />
-                            <button className="button-style-container w-[100px] mt-2">Gửi</button>
+                        <form onSubmit={handleSubmit}>
+                            <input className="form-input mt-2" onBlur={handleBlur} onChange={handleChange} name="name" type="text" placeholder="Tên của bạn" />
+                            <input className="form-input mt-2" onBlur={handleBlur} onChange={handleChange} name="email" type="email" placeholder="Email của bạn" />
+                            <input className="form-input mt-2" onBlur={handleBlur} onChange={handleChange} name="phoneNumber" type="tel" placeholder="Số điện thoại của bạn" />
+                            <input className="form-input mt-2" onBlur={handleBlur} onChange={handleChange} name="content" type="text" placeholder="Nội dung" />
+                            <button type="submit" className="button-style-container w-[100px] mt-2">
+                                Gửi
+                            </button>
                         </form>
                     </div>
                 </div>

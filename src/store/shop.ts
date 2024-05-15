@@ -32,8 +32,8 @@ const shopSlice = createSlice({
         deleteOrderForCart(state, action) {
             state.cart = state.cart.filter((e) => e.id !== action.payload);
         },
-        resetCart(state, action) {
-            state.cart = action.payload;
+        resetCart(state) {
+            state.cart = [];
         },
     },
 });

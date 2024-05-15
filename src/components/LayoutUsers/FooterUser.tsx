@@ -4,6 +4,7 @@ import { FaYoutube } from 'react-icons/fa';
 import { FaTiktok } from 'react-icons/fa';
 import { FaTwitter } from 'react-icons/fa';
 import { FaTelegramPlane } from 'react-icons/fa';
+import FooterCopyright from './FooterCopyright';
 const FooterUser = () => {
     return (
         <div className="mt-8">
@@ -46,7 +47,7 @@ const FooterUser = () => {
                     </ul>
                 </div>
             </div>
-            <div></div>
+            <FooterCopyright />
         </div>
     );
 };
