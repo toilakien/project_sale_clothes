@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, useState } from 'react';
+import React, { ChangeEventHandler, useEffect, useState } from 'react';
 
 type ICheckBoxCustom = {
     children?: any;
@@ -8,8 +8,12 @@ type ICheckBoxCustom = {
 };
 
 const CheckboxCustom = React.forwardRef(({ children, onChange, name, refItem }: ICheckBoxCustom, ref: any) => {
-    console.log(ref);
     const [isDisplay, setIsDisplay] = useState<boolean>(false);
+    useEffect(() => {
+        if (ref.current) {
+            ref.current.checked = true;
+        }
+    }, []);
     return (
         <div className="data-check">
             <input type="checkbox" ref={ref} name={name} onChange={onChange} />

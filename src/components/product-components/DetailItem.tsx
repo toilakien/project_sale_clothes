@@ -36,7 +36,7 @@ const DetailItem = () => {
         }
     };
 
-    const { discount, name, price, image } = detail?.attributes || {};
+    const { discount, name, price, image, color } = detail?.attributes || {};
 
     const params = {
         id: id,
@@ -44,7 +44,7 @@ const DetailItem = () => {
         size: size,
         price: Number(countBuy) * (Number(price) * ((100 - Number(discount)) / 100)),
         name: name,
-        color: 'red',
+        color: color || 1,
     };
 
     const handleAddToCart = () => {

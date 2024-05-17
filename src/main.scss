@@ -234,3 +234,11 @@
     justify-content: space-between;
     padding: 10px;
   }
+  .input-color{
+    
+    input[type="color"] {
+        border: 2px solid #ccc; /* Adjust thickness and color as needed */
+        border-radius: 5px; /* Optional: Adds rounded corners */
+        outline: none;
+    }
+  }

@@ -61,8 +61,8 @@ const Cart = () => {
                                             <tr key={index}>
                                                 <td>{name}</td>
                                                 <td>{size}</td>
-                                                <td>
-                                                    <input type="color" name="" id="" disabled value={'#d'} />
+                                                <td className="input-color">
+                                                    <input type="color" name="" id="" disabled value={getColorByInputNumber(color)} />
                                                 </td>
                                                 <td>{count}</td>
                                                 <td>{formatTypeOfMoney(price)}</td>
@@ -98,7 +98,7 @@ const Cart = () => {
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td>Tổng tiền :</td>
+                                    <td className="font-bold font-medium">Tổng tiền :</td>
                                     <td></td>
                                     <td>{totalMoney(cart)} </td>
                                 </tr>
@@ -118,3 +118,19 @@ const Cart = () => {
 };
 
 export default Cart;
+
+export function getColorByInputNumber(value: number) {
+    switch (value) {
+        case 1:
+            return '#D02E2E';
+        case 2:
+            return '#EDB614';
+        case 3:
+            return '#439D47';
+        case 4:
+            return '#3F51B5';
+
+        default:
+            return '#333';
+    }
+}
