@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { dispatch } from '.';
 import { useNotify } from '../hooks/useNoti';
-import { getProducts, postOrder } from '../services';
+import { getProducts, postFeedback, postOrder } from '../services';
 import { BaseResponse } from '../types';
 import { IProduct } from '../types/product';
 
@@ -51,6 +51,12 @@ export const getProductList = async () => {
 
 export async function postOrderCall({ params, callback }: any) {
     const response = await postOrder(params);
+    if (callback && response) {
+        callback(response);
+    }
+}
+export async function postFeedbackCall({ params, callback }: any) {
+    const response = await postFeedback(params);
     if (callback && response) {
         callback(response);
     }

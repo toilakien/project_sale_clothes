@@ -63,9 +63,6 @@ const HeaderUser = () => {
                 })}
             </ul>
             <div className="flex gap-4 items-center">
-                <a>
-                    <CiSearch style={{ fontSize: '2rem' }} />
-                </a>
                 <Link className="relative" to="/order">
                     <IoCartOutline style={{ fontSize: '2rem' }} />
                     <span className="px-[7px] border-2 border-white rounded-full absolute top-[-10px] left-[20px] bg-slate-200 z-[999]">{count}</span>

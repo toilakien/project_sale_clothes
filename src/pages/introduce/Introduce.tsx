@@ -29,6 +29,47 @@ const Introduce = () => {
                     <img src="https://watermark.lovepik.com/photo/20211208/large/lovepik-fashionable-womens-clothing-picture_501667331.jpg" alt="" />
                 </div>
             </div>
+            <section className="section">
+                <div className="container">
+                    <header className="section__intro">
+                        <h4>Tại sao bạn chọn chúng tôi?</h4>
+                    </header>
+
+                    <ul className="shop-data-items">
+                        <li>
+                            <i className="icon-shipping"></i>
+                            <div className="data-item__content">
+                                <h4>Miễn phí vẩn chuyển</h4>
+                                <p>Tất cả các giao dịch mua trên 5 triệu đều đủ điều kiện để được giao hàng miễn phí.</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <i className="icon-payment"></i>
+                            <div className="data-item__content">
+                                <h4>Thanh toán dễ dàng</h4>
+                                <p>Tất cả các khoản thanh toán được xử lý ngay lập tức qua một giao thức thanh toán an toàn.</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <i className="icon-cash"></i>
+                            <div className="data-item__content">
+                                <h4>Đảm bảo hoàn lại tiền</h4>
+                                <p>Nếu một mặt hàng đến nơi bị hỏng hoặc bạn đã đổi ý, bạn có thể gửi nó quay lại để được hoàn lại đầy đủ.</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <i className="icon-materials"></i>
+                            <div className="data-item__content">
+                                <h4>Chất lượng tốt nhất</h4>
+                                <p>Được thiết kế để bền lâu, mỗi đôi giày của chúng tôi đều được chế tác bằng những vật liệu tốt nhất.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
         </div>
     );
 };

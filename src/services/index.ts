@@ -27,3 +27,6 @@ export const getOrder = () => {
 export const deleteOrder = (id: number) => {
     return axiosServices.delete(`oders/${id}`).then((res) => res?.data);
 };
+export const postFeedback = (params: any) => {
+    return axiosServices.post(`feedbacks`, { data: { ...params } }).then((res) => res?.data);
+};

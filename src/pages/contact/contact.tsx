@@ -3,6 +3,10 @@ import { MdOutlinePlace } from 'react-icons/md';
 import { AiOutlineMail } from 'react-icons/ai';
 import BreakCrum from '../../components/BreakCrum';
 import { useFormik } from 'formik';
+import { dispatch } from '../../store';
+import { postFeedbackCall } from '../../store/shop';
+import { useNotify } from '../../hooks/useNoti';
+import { useNavigate } from 'react-router-dom';
 
 type AddressProps = {
     children?: ReactNode;
@@ -23,6 +27,7 @@ const AddressItem = ({ children, title, des }: AddressProps) => {
 };
 
 const Contact = () => {
+    const navigate = useNavigate();
     const formik = useFormik({
         initialValues: {
             name: '',
@@ -31,10 +36,22 @@ const Contact = () => {
             content: '',
         },
         onSubmit: (values) => {
-            console.log(values);
+            postFeedbackCall({
+                params: { ...values },
+                callback: (res: any) => {
+                    if (res && res?.data !== null) {
+                        useNotify({ title: 'Cảm ơn bạn đã feedback !', status: 'success' });
+                        clear();
+                    }
+                },
+            });
         },
     });
-    const { handleBlur, handleChange, handleSubmit } = formik;
+    const { handleBlur, handleChange, handleSubmit, resetForm, values } = formik;
+    function clear() {
+        resetForm();
+        navigate('/home');
+    }
     return (
         <div className="w-full">
             <hr />
@@ -57,10 +74,18 @@ const Contact = () => {
                         <h1 className="text-2xl font-bold">Gửi thắc mắc cho chúng tôi</h1>
                         <p>Nếu bạn có thắc mắc gì, có thể gửi yêu cầu cho chúng tôi, và chúng tôi sẽ liên lạc lại với bạn sớm nhất có thể .</p>
                         <form onSubmit={handleSubmit}>
-                            <input className="form-input mt-2" onBlur={handleBlur} onChange={handleChange} name="name" type="text" placeholder="Tên của bạn" />
-                            <input className="form-input mt-2" onBlur={handleBlur} onChange={handleChange} name="email" type="email" placeholder="Email của bạn" />
-                            <input className="form-input mt-2" onBlur={handleBlur} onChange={handleChange} name="phoneNumber" type="tel" placeholder="Số điện thoại của bạn" />
-                            <input className="form-input mt-2" onBlur={handleBlur} onChange={handleChange} name="content" type="text" placeholder="Nội dung" />
+                            <input className="form-input mt-2" value={values.name} onBlur={handleBlur} onChange={handleChange} name="name" type="text" placeholder="Tên của bạn" />
+                            <input className="form-input mt-2" value={values.email} onBlur={handleBlur} onChange={handleChange} name="email" type="email" placeholder="Email của bạn" />
+                            <input
+                                className="form-input mt-2"
+                                value={values.phoneNumber}
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                                name="phoneNumber"
+                                type="tel"
+                                placeholder="Số điện thoại của bạn"
+                            />
+                            <input className="form-input mt-2" value={values.content} onBlur={handleBlur} onChange={handleChange} name="content" type="text" placeholder="Nội dung" />
                             <button type="submit" className="button-style-container w-[100px] mt-2">
                                 Gửi
                             </button>
