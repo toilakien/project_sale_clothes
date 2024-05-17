@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import useInfoContext from '../../hooks/useInfoContext';
 import { IRootState } from '../../store';
 import Dropdown from '../Dropdown';
+import logo from '../../assets/img/logo.webp';
 
 const HeaderUser = () => {
     const { cart } = useSelector((state: IRootState) => state.shop);
@@ -50,7 +51,11 @@ const HeaderUser = () => {
 
     return (
         <div className="flex justify-between py-8 px-5 items-center">
-            <h1 className="text-5xl font-bold hover:text-[#fbde59]">Gucci</h1>
+            <h1 className="text-4xl font-bold hover:text-[#fbde59] flex items-center gap-5">
+                <img className="w-[50px]" src={logo} alt="" />
+                Gucci
+            </h1>
+
             <ul className="flex gap-8 ">
                 {listHeaderNav.map((e) => {
                     return (

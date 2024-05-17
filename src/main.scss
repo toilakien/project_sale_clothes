@@ -106,9 +106,9 @@
 	} 
 }
     .site-footer {
-    padding-top: 50px;
+    padding-top: 10px;
     @include breakpoint(phone) {
-      padding-top: 90px;
+      padding-top: 30px;
     }
     .site-footer__top {
       @include breakpoint(phone) {
@@ -362,5 +362,14 @@
           background: var(--color-orange-light);
         }
       }
+    }
+  }
+  .logo_style{
+    width: 100%;
+    position: relative;
+    img{
+      max-width: 100px;
+      position: relative;
+      left:calc(50% - 50px)
     }
   }

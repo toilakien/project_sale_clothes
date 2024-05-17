@@ -1,6 +1,7 @@
 import { ReactNode, createContext, useEffect, useState } from 'react';
 import useLocalstorage from '../hooks/useLocalstorage';
 import axiosServices from '../utils/axiosConfig';
+import { useNotify } from '../hooks/useNoti';
 
 type Props = {
     children: ReactNode;
@@ -21,6 +22,7 @@ type IInitState = {
     login?: any;
     logout?: any;
     logger: boolean;
+    register?: any;
 };
 type IPostLogin = {
     identifier: string;
@@ -75,11 +77,28 @@ const AuthProvider = ({ children }: Props) => {
             setLogger(true);
         } catch (error) {}
     };
+    const register = async ({ username, email, password }: any) => {
+        try {
+            const response = await axiosServices.post('auth/local/register', {
+                username,
+                email,
+                password,
+            });
+
+            if (response.data.jwt !== null) {
+                useNotify({ title: 'Đăng kí tài khoản thành công !', status: 'success' });
+            }
+
+            // setSession(jwt);
+            // setUser(user);
+            // setLogger(true);
+        } catch (error) {}
+    };
     const logout = () => {
         setLogger(false);
         setSession(null);
         setUser(null);
     };
-    return <AuthContext.Provider value={{ isLoading: false, login, logout, logger }}>{children}</AuthContext.Provider>;
+    return <AuthContext.Provider value={{ isLoading: false, login, logout, logger, register }}>{children}</AuthContext.Provider>;
 };
 export { AuthContext, AuthProvider };

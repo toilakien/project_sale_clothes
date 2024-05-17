@@ -1,4 +1,4 @@
-// import Logo from '../../assets/icons/logo';
+import logo from '../../assets/img/logo.webp';
 
 const FooterCopyright = () => {
     return (
@@ -6,8 +6,9 @@ const FooterCopyright = () => {
             <div className="container">
                 <div className="site-footer__top">
                     <div className="site-footer__description">
-                        <h6>
-                            <span>Shoes</span>-Wear
+                        <h6 className="flex gap-5">
+                            <img className="w-[50px]" src={logo} alt="" />
+                            <span>Gucci-Clothes</span>
                         </h6>
                         <p>Chừng Nào Đôi Chân Tôi Còn Bước Trên Mặt Đất – Tôi Sẽ Chỉ Đi Các Đôi Giày Chất Nhất !!!</p>
                         <ul className="site-footer__social-networks">

@@ -8,7 +8,7 @@ import FooterCopyright from './FooterCopyright';
 const FooterUser = () => {
     return (
         <div className="mt-8">
-            <div className="text-center leading-8">
+            <div className="text-center leading-8 mb-6">
                 <h1 className="text-5xl font-bold mb-6">Gucci</h1>
                 <h2 className="text-xl font-bold">Một thương hiệu nỗ lực truyền cảm hứng và thúc đẩy văn hóa sáng tạo phát triển.</h2>
                 <p>
@@ -24,29 +24,8 @@ const FooterUser = () => {
                         <FaTelegramPlane />
                     </div>
                 </div>
-                <div className="mx-auto w-full flex justify-center mt-5">
-                    <ul className="flex gap-8 w-max">
-                        <li>
-                            <a href="">Tìm kiếm</a>
-                        </li>
-                        <li>
-                            <a href="">Giới thiệu</a>
-                        </li>
-                        <li>
-                            <a href="">Chính sách đổi trả</a>
-                        </li>
-                        <li>
-                            <a href="">Chính sách bảo mật</a>
-                        </li>
-                        <li>
-                            <a href="">Điều khoản dịch vụ</a>
-                        </li>
-                        <li>
-                            <a href="">Liên hệ</a>
-                        </li>
-                    </ul>
-                </div>
             </div>
+            <hr />
             <FooterCopyright />
         </div>
     );

@@ -6,13 +6,14 @@ import { setPageTitle } from '../../store/themeConfigSlice';
 import { useFormik } from 'formik';
 import useInfoContext from '../../hooks/useInfoContext';
 import Logo from '../../components/Logo';
-const LoginBoxed = () => {
-    const { isLoading, logger, login } = useInfoContext();
+const Register = () => {
+    const { isLoading, logger, register } = useInfoContext();
 
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(setPageTitle('Login Boxed'));
+        dispatch(setPageTitle('Register'));
     });
+
     const navigate = useNavigate();
     const isDark = useSelector((state: IRootState) => state.themeConfig.theme) === 'dark' ? true : false;
 
@@ -22,11 +23,12 @@ const LoginBoxed = () => {
 
     const formikProps = useFormik({
         initialValues: {
-            identifier: '',
+            username: '',
+            email: '',
             password: '',
         },
         onSubmit: async (values: any) => {
-            await login(values);
+            await register(values);
         },
     });
 
@@ -35,23 +37,27 @@ const LoginBoxed = () => {
         <div className="flex justify-center items-center min-h-screen bg-cover bg-center bg-[url('/assets/images/map.svg')] dark:bg-[url('/assets/images/map-dark.svg')]">
             <div className="panel sm:w-[480px] m-6 max-w-lg w-full">
                 <Logo />
-
-                <h2 className="font-bold text-2xl mb-3 text-center">Sign In</h2>
-                <p className="mb-7 text-center">Enter your email and password to login</p>
+                <h2 className="font-bold text-2xl mb-3 text-center">Register</h2>
+                <p className="mb-7 text-center">Enter complete information into the form to create an account </p>
                 <form className="space-y-5" onSubmit={handleSubmit}>
                     <div>
-                        <label htmlFor="identifier">Email</label>
-                        <input name="identifier" onChange={handleChange} onBlur={handleBlur} id="identifier" type="email" className="form-input" placeholder="Enter Email" />
+                        <label htmlFor="username">UserName</label>
+                        <input name="username" onChange={handleChange} onBlur={handleBlur} id="username" className="form-input" placeholder="Enter Email" />
+                    </div>
+                    <div>
+                        <label htmlFor="email">Email</label>
+                        <input name="email" onChange={handleChange} onBlur={handleBlur} id="email" type="email" className="form-input" placeholder="Enter Email" />
                     </div>
                     <div>
                         <label htmlFor="password">Password</label>
                         <input name="password" onChange={handleChange} onBlur={handleBlur} id="password" type="password" className="form-input" placeholder="Enter Password" />
                     </div>
                     <button type="submit" className="btn btn-primary w-full">
-                        SIGN IN
+                        Create Account
                     </button>
-                    <button onClick={() => navigate('/register')} type="submit" className="btn btn-success w-full">
-                        Create your account !!
+
+                    <button onClick={() => navigate('/login')} type="submit" className="btn btn-success w-full">
+                        Login now
                     </button>
                 </form>
             </div>
@@ -59,4 +65,4 @@ const LoginBoxed = () => {
     );
 };
 
-export default LoginBoxed;
+export default Register;

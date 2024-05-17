@@ -8,11 +8,13 @@ import { IProduct } from '../types/product';
 type IPropState = {
     products: BaseResponse<IProduct>[];
     cart: any[];
+    productNew: any;
 };
 
 const initialState: IPropState = {
     products: [],
     cart: [],
+    productNew: [],
 };
 
 const shopSlice = createSlice({
@@ -21,6 +23,12 @@ const shopSlice = createSlice({
     reducers: {
         setProduct(state, action) {
             state.products = action.payload;
+            // const newP = action?.payload.map((e: any, index: any) => {
+            //     if (new Date(e.attributes.createdAt) === new Date()) {
+            //         return e;
+            //     }
+            // });
+            // state.productNew = newP;
         },
         addToCart(state, action) {
             if (!isDuplicateOrder(state.cart, action.payload)) {
