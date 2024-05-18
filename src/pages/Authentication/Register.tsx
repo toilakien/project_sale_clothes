@@ -29,10 +29,11 @@ const Register = () => {
         },
         onSubmit: async (values: any) => {
             await register(values);
+            resetForm();
         },
     });
 
-    const { handleBlur, handleChange, handleSubmit } = formikProps;
+    const { handleBlur, handleChange, handleSubmit, resetForm, values } = formikProps;
     return (
         <div className="flex justify-center items-center min-h-screen bg-cover bg-center bg-[url('/assets/images/map.svg')] dark:bg-[url('/assets/images/map-dark.svg')]">
             <div className="panel sm:w-[480px] m-6 max-w-lg w-full">
@@ -42,15 +43,15 @@ const Register = () => {
                 <form className="space-y-5" onSubmit={handleSubmit}>
                     <div>
                         <label htmlFor="username">UserName</label>
-                        <input name="username" onChange={handleChange} onBlur={handleBlur} id="username" className="form-input" placeholder="Enter Email" />
+                        <input value={values.username} name="username" onChange={handleChange} onBlur={handleBlur} id="username" className="form-input" placeholder="Enter Email" />
                     </div>
                     <div>
                         <label htmlFor="email">Email</label>
-                        <input name="email" onChange={handleChange} onBlur={handleBlur} id="email" type="email" className="form-input" placeholder="Enter Email" />
+                        <input value={values.email} name="email" onChange={handleChange} onBlur={handleBlur} id="email" type="email" className="form-input" placeholder="Enter Email" />
                     </div>
                     <div>
                         <label htmlFor="password">Password</label>
-                        <input name="password" onChange={handleChange} onBlur={handleBlur} id="password" type="password" className="form-input" placeholder="Enter Password" />
+                        <input value={values.password} name="password" onChange={handleChange} onBlur={handleBlur} id="password" type="password" className="form-input" placeholder="Enter Password" />
                     </div>
                     <button type="submit" className="btn btn-primary w-full">
                         Create Account
