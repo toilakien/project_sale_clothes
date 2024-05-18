@@ -4,6 +4,7 @@ import ProductUser from '../product-user/ProductUser';
 import { useDispatch } from 'react-redux';
 import { setPageTitle } from '../../store/themeConfigSlice';
 import ProductUserBuySale from '../product-user-buySale/ProductUserBySale';
+import Category from '../../components/category';
 
 const HomePage = () => {
     const dispatch = useDispatch();
@@ -13,6 +14,8 @@ const HomePage = () => {
     return (
         <div>
             <BannerUser />
+            <Category />
+            <br />
             <ProductUser />
             <br />
             <ProductUserBuySale />
